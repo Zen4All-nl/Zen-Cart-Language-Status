@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# Zen-Cart-Disable-language
+This module will allow you to disable and enable languages instead of deleting.
+=======
 <h1>Set Language Status for Zen Cart</h1>
 <h3>Version 1.0.0 by Zen4All</h3>
 <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587">https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587</a></p>
@@ -20,3 +24,4 @@
 </ol>
 <h2>Un-install</h2>
 <p>Run the <strong>uninstall_language_status.sql</strong> to remove the database entries, then replace the files you previously copied with their initial contents. The contents of the SQL file <strong>assume</strong> that the DB_PREFIX value in your configure.php files is set to blank ('').  If that's not the case, you'll need to edit the .sql file to add your database prefix to the <em>languages</em> table's name. For example, if your DB_PREFIX value is 'zen_', then you would add zen_ to the name of the languages' table (i.e. zen_languages) before running the SQL script.</p>
+>>>>>>> dev
