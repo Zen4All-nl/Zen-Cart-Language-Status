@@ -1,3 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Language Status</title>
+
+    <style type="text/css">
+      a, a:active, a:visited {
+        color: #006666;
+        text-decoration: none
+      }
+      a:hover {
+        color:#00CC99;
+        text-decoration: underline;
+      }
+      BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT {
+        font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif;
+        font-size: 10pt;
+        color: black;
+        padding: 0px;
+        margin: 20px;
+      }
+      H1, H2, H3, H4 {
+        font-weight: bold
+      }
+      h1 {
+        font-size: 20px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      code {
+        padding-left: 25px;
+      }
+      ol li {
+        margin-left: 0;
+      }
+      .corefile {
+        color: red;
+      }
+      .removed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a name="top" id="top"></a>
     <h1>Set Language Status for Zen Cart</h1>
     <h3>Version 1.0.0 by Zen4All</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587">https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587</a></p>
@@ -20,3 +68,5 @@
     </ol>
     <h2>Un-install</h2>
     <p>Run the <strong>uninstall_language_status.sql</strong> to remove the database entries, then replace the files you previously copied with their initial contents. The contents of the SQL file <strong>assume</strong> that the DB_PREFIX value in your configure.php files is set to blank ('').  If that's not the case, you'll need to edit the .sql file to add your database prefix to the <em>languages</em> table's name. For example, if your DB_PREFIX value is 'zen_', then you would add zen_ to the name of the languages' table (i.e. zen_languages) before running the SQL script.</p>
+  </body>
+</html>
