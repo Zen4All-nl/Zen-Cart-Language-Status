@@ -1,0 +1,1 @@
+ALTER TABLE `languages` ADD `status` TINYINT(1) NULL DEFAULT '1' AFTER `sort_order`;
