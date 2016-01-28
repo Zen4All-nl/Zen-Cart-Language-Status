@@ -24,9 +24,12 @@ class language extends base {
     global $db;
 
     $this->catalog_languages = array();
+    /* BOF Zen4All Language Status 1 of 1 */
     $languages_query = "select languages_id, name, code, image, directory
-                          from " . TABLE_LANGUAGES . " 
+                          from " . TABLE_LANGUAGES . "
+                          and status = 1
                           order by sort_order";
+    /* EOF Zen4All Language Status 1 of 1 */
 
     $languages = $db->Execute($languages_query);
 
