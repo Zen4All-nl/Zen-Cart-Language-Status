@@ -17,22 +17,22 @@
         $image = zen_db_prepare_input($_POST['image']);
         $directory = zen_db_prepare_input($_POST['directory']);
         $sort_order = zen_db_prepare_input((int)$_POST['sort_order']);
-        /* BOF Zen4All Enable Language 1 of 11 */
+        /* BOF Zen4All Language Status 1 of 11 */
         $status = $_POST['status'] == 'on' ? 1 : 0;
-        /* EOF Zen4All Enable Language 1 of 11 */
+        /* EOF Zen4All Language Status 1 of 11 */
         $check = $db->Execute("select * from " . TABLE_LANGUAGES . " where code = '" . zen_db_input($code) . "'");
         if ($check->RecordCount() > 0) {
           $messageStack->add(ERROR_DUPLICATE_LANGUAGE_CODE, 'error');
         } else {
 
-          /* BOF Zen4All Enable Language 2 of 11 */
+          /* BOF Zen4All Language Status 2 of 11 */
           $db->Execute("insert into " . TABLE_LANGUAGES . "
                         (name, code, image, directory, sort_order, status)
                         values ('" . zen_db_input($name) . "', '" . zen_db_input($code) . "',
                                 '" . zen_db_input($image) . "', '" . zen_db_input($directory) . "',
                                 '" . zen_db_input($sort_order) . "',
                                 '" . (int)$status . "')");
-          /* EOF Zen4All Enable Language 2 of 11 */
+          /* EOF Zen4All Language Status 2 of 11 */
           $insert_id = $db->Insert_ID();
 
           zen_record_admin_activity('Language [' . $code . '] added', 'info');
@@ -214,9 +214,9 @@
         $image = zen_db_prepare_input($_POST['image']);
         $directory = zen_db_prepare_input($_POST['directory']);
         $sort_order = zen_db_prepare_input($_POST['sort_order']);
-        /* BOF Zen4All Enable Language 3 of 11 */
+        /* BOF Zen4All Language Status 3 of 11 */
         $status = $_POST['status'] == 'on' ? 1 : 0;
-        /* EOF Zen4All Enable Language 3 of 11 */
+        /* EOF Zen4All Language Status 3 of 11 */
 
         // check if the spelling of the name for the default language has just been changed (thus meaning we need to change the spelling of DEFAULT_LANGUAGE to match it)
 // get "code" for the language we just updated
@@ -229,14 +229,14 @@
         $default_lang_change_flag = ($default_needs_an_update && $changing_default_lang) ? true : false;
 
         // save new language settings
-        /* BOF Zen4All Enable Language 4 of 11 */
+        /* BOF Zen4All Language Status 4 of 11 */
         $db->Execute("update " . TABLE_LANGUAGES . "
                       set name = '" . zen_db_input($name) . "', code = '" . zen_db_input($code) . "',
                       image = '" . zen_db_input($image) . "', directory = '" . zen_db_input($directory) . "',
                       sort_order = '" . zen_db_input($sort_order) . "',
                       status = " . (int)$status . "
                       where languages_id = '" . (int)$lID . "'");
-        /* EOF Zen4All Enable Language 4 of 11 */
+        /* EOF Zen4All Language Status 4 of 11 */
 
         // update default language setting
         if ((isset($_POST['default']) && $_POST['default'] == 'on') || $default_lang_change_flag == true) {
@@ -291,7 +291,7 @@
           $messageStack->add(ERROR_REMOVE_DEFAULT_LANGUAGE, 'error');
         }
         break;
-      /* BOF Zen4All Enable Language 5 of 11 */
+      /* BOF Zen4All Language Status 5 of 11 */
       case 'setstatus':
         $languages_id = zen_db_prepare_input($_GET['lID']);
         if (isset($_POST['current_status']) && ($_POST['current_status'] == '0' || $_POST['current_status'] == '1')) {
@@ -302,7 +302,7 @@
         }
         $action = '';
         break;
-      /* EOF Zen4All Enable Language 5 of 11 */
+      /* EOF Zen4All Language Status 5 of 11 */
     }
   }
 ?>
@@ -353,15 +353,15 @@
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_LANGUAGE_NAME; ?></td>
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_LANGUAGE_CODE; ?></td>
-                <!-- BOF Zen4all Enable Language 6 of 11 -->
+                <!-- BOF Zen4all Language Status 6 of 11 -->
                 <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_LANGUAGE_STATUS; ?></td>
-                <!-- EOF Zen4all Enable Language 6 of 11 -->
+                <!-- EOF Zen4all Language Status 6 of 11 -->
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  /* BOF Zen4all Enable Language 7 of 11 */
+  /* BOF Zen4all Language Status 7 of 11 */
   $languages_query_raw = "select languages_id, name, code, image, directory, sort_order, status from " . TABLE_LANGUAGES . " order by sort_order";
-  /* EOF Zen4all Enable Language 7 of 11 */
+  /* EOF Zen4all Language Status 7 of 11 */
   $languages_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $languages_query_raw, $languages_query_numrows);
   $languages = $db->Execute($languages_query_raw);
   while (!$languages->EOF) {
@@ -380,7 +380,7 @@
     }
 ?>
                 <td class="dataTableContent"><?php echo $languages->fields['code']; ?></td>
-                <!-- BOF Zen4All Enable Language 8 of 11 -->
+                <!-- BOF Zen4All Language Status 8 of 11 -->
                 <td class="dataTableContent" align="center" width="40">
                   <?php
                   echo zen_draw_form('setstatus', FILENAME_LANGUAGES, 'action=setstatus&lID=' . $languages->fields['languages_id'] . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '') . (isset($_GET['search']) ? '&search=' . $_GET['search'] : ''));
@@ -396,7 +396,7 @@
                   <input type="hidden" name="current_status" value="<?php echo $languages->fields['status']; ?>" />
                   </form>
                 </td>
-                <!-- EOF Zen4All Enable Language 8 of 11 -->
+                <!-- EOF Zen4All Language Status 8 of 11 -->
                 <td class="dataTableContent" align="right"><?php if (isset($lInfo) && is_object($lInfo) && ($languages->fields['languages_id'] == $lInfo->languages_id)) { echo zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif'); } else { echo '<a href="' . zen_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $languages->fields['languages_id']) . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
@@ -434,9 +434,9 @@
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_IMAGE . '<br>' . zen_draw_input_field('image', 'icon.gif'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_DIRECTORY . '<br>' . zen_draw_input_field('directory'));
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_SORT_ORDER . '<br>' . zen_draw_input_field('sort_order'));
-      /* BOF Zen4All Enable Language 9 of 11 */
+      /* BOF Zen4All Language Status 9 of 11 */
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_STATUS . '<br>' . zen_draw_checkbox_field('status', '', true));
-      /* EOF Zen4All Enable Language 9 of 11 */
+      /* EOF Zen4All Language Status 9 of 11 */
       $contents[] = array('text' => '<br>' . zen_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_insert.gif', IMAGE_INSERT) . ' <a href="' . zen_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $_GET['lID']) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
@@ -449,9 +449,9 @@
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_IMAGE . '<br>' . zen_draw_input_field('image', $lInfo->image));
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_DIRECTORY . '<br>' . zen_draw_input_field('directory', $lInfo->directory));
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_SORT_ORDER . '<br>' . zen_draw_input_field('sort_order', $lInfo->sort_order));
-      /* BOF Zen4All Enable Language 10 of 11 */
+      /* BOF Zen4All Language Status 10 of 11 */
       $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_STATUS . '<br>' . zen_draw_checkbox_field('status', '', $lInfo->status));
-      /* EOF Zen4All Enable Language 10 of 11 */
+      /* EOF Zen4All Language Status 10 of 11 */
       if (DEFAULT_LANGUAGE != $lInfo->code) $contents[] = array('text' => '<br>' . zen_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_update.gif', IMAGE_UPDATE) . ' <a href="' . zen_href_link(FILENAME_LANGUAGES, 'page=' . $_GET['page'] . '&lID=' . $lInfo->languages_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
@@ -471,9 +471,9 @@
         $contents[] = array('text' => '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $lInfo->directory . '/images/' . $lInfo->image, $lInfo->name));
         $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_DIRECTORY . '<br>' . DIR_WS_CATALOG_LANGUAGES . '<b>' . $lInfo->directory . '</b>');
         $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_SORT_ORDER . ' ' . $lInfo->sort_order);
-        /* BOF Zen4All Enable Language 11 of 11 */
+        /* BOF Zen4All Language Status 11 of 11 */
         $contents[] = array('text' => '<br>' . TEXT_INFO_LANGUAGE_STATUS . ' ' . ($lInfo->status == 0 ? TEXT_NO : TEXT_YES));
-        /* EOF Zen4All Enable Language 11 of 11 */
+        /* EOF Zen4All Language Status 11 of 11 */
       }
       break;
   }
