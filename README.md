@@ -1,8 +1,13 @@
 <h1>Set Language Status for Zen Cart</h1>
-<h3>Version 1.0.0 by Zen4All</h3>
+<h3>Version 1.0.1 by Zen4All</h3>
 <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587">https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587</a></p>
 <h2>Version History:</h2>
 <ul>
+      <li>v1.0.1, 2016-05-05, Bug release
+        <ul>
+          <li>updated \includes\classes\language.php Changed query "and" becomes "where"</li>
+        </ul>
+      </li>
 <li>v1.0.0, 2016-01-28, Initial release</li>
 </ul>
 <h2>What it does</h2>
