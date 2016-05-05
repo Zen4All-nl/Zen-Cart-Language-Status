@@ -27,7 +27,7 @@ class language extends base {
     /* BOF Zen4All Language Status 1 of 1 */
     $languages_query = "select languages_id, name, code, image, directory
                           from " . TABLE_LANGUAGES . "
-                          and status = 1
+                          where status = 1
                           order by sort_order";
     /* EOF Zen4All Language Status 1 of 1 */
 
