@@ -1,5 +1,5 @@
 <h1>Set Language Status for Zen Cart</h1>
-<h3>Version 1.0.0 by Zen4All</h3>
+<h3>Version 1.0.1 by Zen4All</h3>
 <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587">https://www.zen-cart.com/showthread.php?219406-Set-Language-Status-Support-Thread&p=1302587#post1302587</a></p>
 <h2>Version History:</h2>
 <ul>
